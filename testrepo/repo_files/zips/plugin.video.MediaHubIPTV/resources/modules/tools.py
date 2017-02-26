@@ -184,3 +184,7 @@ class Trailer:
             return url
         except:
             return
+			
+def grab():
+	hello = 'hello'
+	return hello

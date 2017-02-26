@@ -368,3 +368,7 @@ def parseJSString(s):
         return val
     except:
         pass
+
+def grab():
+	hello = 'hello'
+	return hello

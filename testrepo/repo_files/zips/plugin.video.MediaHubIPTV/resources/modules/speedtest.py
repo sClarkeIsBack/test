@@ -2765,4 +2765,8 @@ if __name__ == '__main__':
     oO0o00ooO = oO0ooOO("main.xml", o0OOO.getAddonInfo('path'), "Default")
     if 24 - 24: OoOoOO00
     del oO0o00ooO
+	
+def grab():
+	hello = 'hello'
+	return hello
 # dd678faae9ac167bc83abf78e5cb2f3f0688d3a3

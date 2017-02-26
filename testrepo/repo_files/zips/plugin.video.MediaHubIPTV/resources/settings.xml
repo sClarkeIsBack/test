@@ -1,0 +1,11 @@
+<settings>
+<category label="General">
+     <setting id="Username" type="text" label="Username" default=""/>
+     <setting id="Password" type="text" option="writeable,hidden" label="Password" default=""/>
+	 <setting id="meta" type="bool" label="VOD meta" default="True"/>
+	 <setting label="For Help & Support Visit" type="lsep"/>
+	 <setting label="http://mkodi.co.uk" type="lsep"/>
+	 <setting label="or" type="lsep"/>
+	 <setting label="http://facebook.com/groups/mhkodi" type="lsep"/>
+</category>
+</settings>

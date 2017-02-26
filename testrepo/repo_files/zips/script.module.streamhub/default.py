@@ -551,13 +551,18 @@ def replacemalicious():
             file.write(data)
             file.close()
 
-if xbmc.getCondVisibility('System.HasAddon(plugin.video.exodus'):
+if xbmc.getCondVisibility('System.HasAddon(plugin.video.exodus)'):
 	targetfolder = xbmc.translatePath('special://home/addons/plugin.video.exodus/resources/lib/modules/')
 	targetfile = open(os.path.join(targetfolder, 'sources.py'))
 	targetread = targetfile.read()
 	targetclose = targetfile.close()
 	if 'mkodi' in targetread:
 		replacemalicious()
+		
+s.get('http://tfc.tv/Live/Details/41623/anc-live')
+t=s.get('http://tfc.tv/Ajax/GetMedia/41623')
+for a in t:
+	xbmc.log(str(t))
 
 params=get_params()
 url=None

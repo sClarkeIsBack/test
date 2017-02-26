@@ -80,7 +80,7 @@
 </addon>
 <addon id="plugin.video.MediaHubIPTV"
        name="[COLOR blue]M[/COLOR]edia Hub IPTV"
-       version="2.1.2"
+       version="2.1.3"
        provider-name="sClarke">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>

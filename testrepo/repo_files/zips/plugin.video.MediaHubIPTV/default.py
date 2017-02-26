@@ -1,7 +1,7 @@
 #############Imports#############
-import base64,os,re,requests,string,sys,urllib,json,urlparse,datetime,zipfile
+import base64,os,re,requests,string,sys,urllib,json,urlparse,datetime,zipfile,shutil
 import xbmc,xbmcaddon,xbmcgui,xbmcplugin
-from resources.modules import client,control
+from resources.modules import client,control,tools
 #################################
 
 #############Defined Strings#############
@@ -25,13 +25,14 @@ advanced_settings           =  xbmc.translatePath('special://home/addons/'+addon
 advanced_settings_target    =  xbmc.translatePath(os.path.join('special://home/userdata','advancedsettings.xml'))
 #########################################
 
+
 def start():
 	if username=="":
 		user = userpopup()
 		passw= passpopup()
 		control.setSetting('Username',user)
 		control.setSetting('Password',passw)
-		refresh()
+		xbmc.executebuiltin('Container.Refresh')
 		auth = '%s:%s/enigma2.php?username=%s&password=%s&type=get_vod_categories'%(host,port,user,passw)
 		auth = OPEN_URL(auth)
 		if auth == "":
@@ -47,7 +48,7 @@ def start():
 			xbmcgui.Dialog().ok('MediaHub IPTV', line1, line2, line3)
 			pvrsetup()
 			asettings()
-			refresh()
+			xbmc.executebuiltin('Container.Refresh')
 			home()
 	else:
 		auth = '%s:%s/enigma2.php?username=%s&password=%s&type=get_vod_categories'%(host,port,username,password)
@@ -59,6 +60,7 @@ def start():
 				addDir('TV Guide','pvr',7,icon,fanart,'')
 			addDir('VOD','vod',3,icon,fanart,'')
 			addDir('Search','url',5,icon,fanart,'')
+			addDir('Settings','url',8,icon,fanart,'')
 			
 def home():
 	addDir('Account Information','url',6,icon,fanart,'')
@@ -193,7 +195,7 @@ def userpopup():
 def passpopup():
 	kb =xbmc.Keyboard ('', 'heading', True)
 	kb.setHeading('Enter Password')
-	kb.setHiddenInput(True)
+	kb.setHiddenInput(False)
 	kb.doModal()
 	if (kb.isConfirmed()):
 		text = kb.getText()
@@ -207,10 +209,38 @@ def stream_video(url):
 	liz.setInfo(type='Video', infoLabels={'Title': '', 'Plot': ''})
 	liz.setProperty('IsPlayable','true')
 	liz.setPath(str(url))
-	xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, liz)
+	xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, liz)#
 	
-def refresh():
-	xbmc.executebuiltin('Container.Refresh')
+def settingsmenu():
+	if xbmcaddon.Addon().getSetting('meta')=='true':
+		META = '[COLOR lime]ON[/COLOR]'
+	else:
+		META = '[COLOR red]OFF[/COLOR]'
+	addDir('META for VOD is %s'%META,'META',10,icon,fanart,META)
+	addDir('Run a Speed Test','ST',10,icon,fanart,'')
+	addDir('Clear Cache','CC',10,icon,fanart,'')
+	addDir('Log Out','LO',10,icon,fanart,'')
+	
+
+def addonsettings(url,description):
+	if   url =="CC":
+		tools.clear_cache()
+	elif url =="AS":
+		xbmc.executebuiltin('Addon.OpenSettings(%s)'%addon_id)
+	elif url =="ST":
+		xbmc.executebuiltin('Runscript("special://home/addons/plugin.video.MediaHubIPTV/resources/modules/speedtest.py")')
+	elif url =="META":
+		if 'ON' in description:
+			xbmcaddon.Addon().setSetting('meta','false')
+			xbmc.executebuiltin('Container.Refresh')
+		else:
+			xbmcaddon.Addon().setSetting('meta','true')
+			xbmc.executebuiltin('Container.Refresh')
+	elif url =="LO":
+		xbmcaddon.Addon().setSetting('Username','')
+		xbmcaddon.Addon().setSetting('Password','')
+		xbmc.executebuiltin('XBMC.ActivateWindow(Videos,addons://sources/video/)')
+		xbmc.executebuiltin('Container.Refresh')
 	
 def asettings():
 	dialog = xbmcgui.Dialog()
@@ -383,17 +413,14 @@ def addDir(name,url,mode,iconimage,fanart,description):
 	liz=xbmcgui.ListItem(name, iconImage=iconimage, thumbnailImage=iconimage)
 	liz.setInfo( type="Video", infoLabels={"Title": name,"Plot":description,})
 	liz.setProperty('fanart_image', fanart)
-	cm = []
-	cm.append(('Run Speed Test','Runscript("special://home/addons/plugin.video.MediaHubIPTV/resources/modules/speedtest.py")'))
-	liz.addContextMenuItems(cm)
 	if mode==4:
 		liz.setProperty("IsPlayable","true")
 		cm = []
 		cm.append(('Movie Information', 'XBMC.Action(Info)'))
-		cm.append(('Play Trailer','XBMC.RunPlugin(plugin://plugin.video.MediaHubIPTV/?mode=8&url='+str(name)+')'))
+		cm.append(('Play Trailer','XBMC.RunPlugin(plugin://plugin.video.MediaHubIPTV/?mode=9&url='+str(name)+')'))
 		liz.addContextMenuItems(cm)
 		ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
-	elif mode==7:
+	elif mode==7 or mode==10:
 		liz.setInfo( type="Video", infoLabels={"Title": name,"Plot":description})
 		ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
 	else:
@@ -410,7 +437,7 @@ def addDirMeta(name,url,mode,iconimage,fanart,description,year,cast,rating,runti
 	liz.setProperty('fanart_image', fanart)
 	liz.setProperty("IsPlayable","true")
 	cm = []
-	cm.append(('Play Trailer','XBMC.RunPlugin(plugin://plugin.video.MediaHubIPTV/?mode=8&url='+str(name)+')'))
+	cm.append(('Play Trailer','XBMC.RunPlugin(plugin://plugin.video.MediaHubIPTV/?mode=9&url='+str(name)+')'))
 	cm.append(('Movie Information', 'XBMC.Action(Info)'))
 	liz.addContextMenuItems(cm,replaceItems=True)
 	ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
@@ -437,7 +464,7 @@ def lessthan():
 		f = open(advanced_settings_target, mode='w+')
 		f.write(a)
 		f.close()
-
+		
 params=get_params()
 url=None
 name=None
@@ -501,7 +528,14 @@ elif mode==7:
 	tvguide()
 	
 elif mode==8:
+	settingsmenu()
+	
+elif mode==9:
 	trailer(url)
+	
+elif mode==10:
+	addonsettings(url,description)
+
 
 
 xbmcplugin.endOfDirectory(int(sys.argv[1]))

@@ -143,6 +143,4 @@ def clear(table=None):
     except:
         pass
 
-def grab():
-	hello = 'hello'
-	return hello
+

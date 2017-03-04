@@ -133,7 +133,3 @@ def idle():
 
 def set_view_mode(vmid):
     return execute('Container.SetViewMode({0})'.format(vmid))
-	
-def grab():
-	hello = 'hello'
-	return hello

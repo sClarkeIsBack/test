@@ -108,6 +108,3 @@ class Trailer:
         except:
             return
 
-def grab():
-	hello = 'hello'
-	return hello

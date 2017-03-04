@@ -1,7 +1,7 @@
  #############Imports#############
 import xbmc,xbmcaddon,xbmcgui,xbmcplugin,base64,os,re,unicodedata,requests,time,string,sys,urllib,urllib2,json,urlparse,datetime,zipfile,shutil
-from resources.modules import client,control,tools
-from resources.ivue import ivue
+from resources.modules import client,control,tools,downloader
+from resources.ivue import ivuesetup
 import xml.etree.ElementTree as ElementTree
 #################################
 
@@ -22,8 +22,13 @@ vod_url      = '%s:%s/enigma2.php?username=%s&password=%s&type=get_vod_categorie
 panel_api    = '%s:%s/panel_api.php?username=%s&password=%s'%(host,port,username,password)
 play_url     = '%s:%s/live/%s/%s/'%(host,port,username,password)
 
+footballfriday= 'https://github.com/sClarkeIsBack/MediaH/raw/master/footballguide/footballtemplatefriday.png'
+footballsaturday= 'https://github.com/sClarkeIsBack/MediaH/raw/master/footballguide/footballtemplatesaturday.png'
+footballsunday= 'https://github.com/sClarkeIsBack/MediaH/raw/master/footballguide/footballtemplatesunday.png'
+
 Guide = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.MediaHubIPTV/resources/catchup', 'guide.xml'))
 GuideLoc = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.MediaHubIPTV/resources/catchup', 'g'))
+
 advanced_settings           =  xbmc.translatePath('special://home/addons/'+addon_id+'/resources/advanced_settings')
 advanced_settings_target    =  xbmc.translatePath(os.path.join('special://home/userdata','advancedsettings.xml'))
 #########################################
@@ -248,11 +253,13 @@ def _pbhook(numblocks, blocksize, filesize, dp, start_time):
 
 def tvguide():
 	if xbmc.getCondVisibility('System.HasAddon(pvr.iptvsimple)') and xbmc.getCondVisibility('System.HasAddon(script.ivueguide)'):
-		dialog = xbmcgui.Dialog().select('Select a TV Guide', ['PVR TV Guide','iVue TV Guide'])
+		dialog = xbmcgui.Dialog().select('Select a TV Guide', ['PVR TV Guide','iVue TV Guide','Football Guide'])
 		if dialog==0:
 			xbmc.executebuiltin('ActivateWindow(TVGuide)')
 		elif dialog==1:
 			xbmc.executebuiltin('RunAddon(script.ivueguide)')
+		elif dialog==2:
+			footballguide()
 	elif not xbmc.getCondVisibility('System.HasAddon(pvr.iptvsimple)') and xbmc.getCondVisibility('System.HasAddon(script.ivueguide)'):
 		xbmc.executebuiltin('RunAddon(script.ivueguide)')
 	elif xbmc.getCondVisibility('System.HasAddon(pvr.iptvsimple)') and not xbmc.getCondVisibility('System.HasAddon(script.ivueguide)'):
@@ -444,9 +451,9 @@ def correctPVR():
 	moist.setSetting(id='m3uCache', value="false")
 	moist.setSetting(id='epgCache', value="false")
 	xbmc.executebuiltin("Container.Refresh")
-
+	
 def ivueint():
-	ivue.iVueInt()
+	ivuesetup.iVueInt()
 	
 def tvguidesetup():
 		dialog = xbmcgui.Dialog().select('Select a TV Guide to Setup', ['iVue TV Guide','PVR TV Guide','Both'])
@@ -461,6 +468,31 @@ def tvguidesetup():
 			ivueint()
 			xbmcgui.Dialog().ok('MediaHub IPTV', 'PVR & iVue Integration Complete')
 	
+def footballguide():
+	day = num2day(str(datetime.datetime.today().weekday()))
+	if day == "saturday":
+		xbmc.executebuiltin("ShowPicture("+footballsaturday+")")
+	elif day=="sunday":
+		xbmc.executebuiltin("ShowPicture("+footballsunday+")")
+	else:
+		xbmc.executebuiltin("ShowPicture("+footballfriday+")")
+
+def num2day(num):
+	if num =="0":
+		day = 'monday'
+	elif num=="1":
+		day = 'tuesday'
+	elif num=="2":
+		day = 'wednesday'
+	elif num=="3":
+		day = 'thursday'
+	elif num=="4":
+		day = 'friday'
+	elif num=="5":
+		day = 'saturday'
+	elif num=="6":
+		day = 'sunday'
+	return day
 
 params=tools.get_params()
 url=None

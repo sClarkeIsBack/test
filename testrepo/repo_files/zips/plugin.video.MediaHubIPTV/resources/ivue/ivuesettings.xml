@@ -1,6 +1,6 @@
 <settings>
     <setting id="addon.match" value="1" />
-    <setting id="addons.ini.file" value="special://userdata/addon_data/plugin.video.MediaHubIPTV/resources/ivue/MediaHubIPTV.ini" />
+    <setting id="addons.ini.file" value="special://userdata/addon_data/script.ivue/resources/ini/plugin.video.MediaHubIPTV/plugin.video.MediaHubIPTV.ini" />
     <setting id="addons.ini.type" value="1" />
     <setting id="alternative.playback" value="false" />
     <setting id="autostart" value="false" />
@@ -16,7 +16,7 @@
     <setting id="customSkin.type" value="0" />
     <setting id="description.color" value="[COLOR ffffffff]white[/COLOR]" />
     <setting id="download.skin" value="" />
-    <setting id="enable.osd" value="true" />
+    <setting id="enable.osd" value="false" />
     <setting id="focus.color" value="[COLOR ffffffff]white[/COLOR]" />
     <setting id="font.size" value="false" />
     <setting id="ignore.stream" value="false" />

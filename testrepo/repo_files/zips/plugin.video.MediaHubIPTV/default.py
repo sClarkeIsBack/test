@@ -2,6 +2,7 @@
 import xbmc,xbmcaddon,xbmcgui,xbmcplugin,base64,os,re,unicodedata,requests,time,string,sys,urllib,urllib2,json,urlparse,datetime,zipfile,shutil
 from resources.modules import client,control,tools,shortlinks
 from resources.ivue import ivuesetup
+from datetime import date
 import xml.etree.ElementTree as ElementTree
 #################################
 
@@ -33,6 +34,7 @@ advanced_settings           =  xbmc.translatePath('special://home/addons/'+addon
 advanced_settings_target    =  xbmc.translatePath(os.path.join('special://home/userdata','advancedsettings.xml'))
 #########################################
 
+
 def start():
 	if username=="":
 		user = userpopup()
@@ -54,7 +56,7 @@ def start():
 			line3 = ('[COLOR blue]%s[/COLOR]'%user)
 			xbmcgui.Dialog().ok('MediaHub IPTV', line1, line2, line3)
 			tvguidesetup()
-			asettings()
+			addonsettings('ADS2','')
 			xbmc.executebuiltin('Container.Refresh')
 			home()
 	else:
@@ -306,7 +308,6 @@ def settingsmenu():
 		META = '[COLOR lime]ON[/COLOR]'
 	else:
 		META = '[COLOR red]OFF[/COLOR]'
-	tools.addDir('Integrate With TV Guide','tv',10,icon,fanart,'')
 	tools.addDir('Edit Advanced Settings','ADS',10,icon,fanart,'')
 	tools.addDir('META for VOD is %s'%META,'META',10,icon,fanart,META)
 	tools.addDir('Log Out','LO',10,icon,fanart,'')
@@ -337,6 +338,23 @@ def addonsettings(url,description):
 		elif dialog==5:
 			advancedsettings('remove')
 			xbmcgui.Dialog().ok('MediaHub IPTV', 'Advanced Settings Removed')
+	elif url =="ADS2":
+		dialog = xbmcgui.Dialog().select('Select Your Device Or Closest To', ['Fire TV Stick ','Fire TV','1GB Ram or Lower','2GB Ram or Higher','Nvidia Shield'])
+		if dialog==0:
+			advancedsettings('stick')
+			xbmcgui.Dialog().ok('MediaHub IPTV', 'Set Advanced Settings')
+		elif dialog==1:
+			advancedsettings('firetv')
+			xbmcgui.Dialog().ok('MediaHub IPTV', 'Set Advanced Settings')
+		elif dialog==2:
+			advancedsettings('lessthan')
+			xbmcgui.Dialog().ok('MediaHub IPTV', 'Set Advanced Settings')
+		elif dialog==3:
+			advancedsettings('morethan')
+			xbmcgui.Dialog().ok('MediaHub IPTV', 'Set Advanced Settings')
+		elif dialog==4:
+			advancedsettings('shield')
+			xbmcgui.Dialog().ok('MediaHub IPTV', 'Set Advanced Settings')
 	elif url =="tv":
 		dialog = xbmcgui.Dialog().select('Select a TV Guide to Setup', ['iVue TV Guide','PVR TV Guide','Both'])
 		if dialog==0:
@@ -529,6 +547,7 @@ def num2day(num):
 	
 def extras():
 	tools.addDir('Create a Short M3U & EPG URL','url',17,icon,fanart,'')
+	tools.addDir('Integrate With TV Guide','tv',10,icon,fanart,'')
 	tools.addDir('Run a Speed Test','ST',10,icon,fanart,'')
 	tools.addDir('Football Guide','url',19,icon,fanart,'')
 	tools.addDir('Clear Cache','CC',10,icon,fanart,'')
@@ -542,8 +561,11 @@ def get():
 		for home,v,away in name:
 			koff  = tools.regex_from_to(a,'<strong>','</strong>')
 			chan = tools.regex_from_to(a,'class="channel-name">','</span>')
+			if chan == "Live Stream":
+				chan = 'Not Televised'
 			thumb = tools.regex_from_to(a,'                        <img src="','"')
-			tools.addDir(koff+' - '+str(home).replace('</em>','')+' '+v+'  '+away+'   -   [COLOR blue]%s[/COLOR]'%chan,'url',18,'http://www.wheresthematch.com'+str(thumb).replace('..',''),fanart,chan)
+			if 'Bet 365 Live' not in chan:
+					tools.addDir(koff+' - '+str(home).replace('</em>','')+' '+v+'  '+away+'   -   [COLOR blue]%s[/COLOR]'%chan,'url',18,'http://www.wheresthematch.com'+str(thumb).replace('..',''),fanart,chan)
 
 def footballguidesearch(description):
 	if description=='BBC1 Scotland':

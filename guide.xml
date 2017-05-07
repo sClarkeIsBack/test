@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<tv generator-info-name="WebGrab+Plus/w MDB &amp; REX Postprocess -- version  V2.0 -- Jan van Straaten" generator-info-url="http://www.webgrabplus.com">
+  <channel id="Fox News">
+    <display-name lang="en">Fox News</display-name>
+    <icon src="http://images.zap2it.com/station_logo/fnc.gif" />
+    <url>http://www.zap2it.com</url>
+  </channel>
+  <programme start="20170507000000 -0400" stop="20170507010000 -0400" channel="Fox News">
+    <title lang="en">Justice With Judge Jeanine</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507010000 -0400" stop="20170507020000 -0400" channel="Fox News">
+    <title lang="en">The Greg Gutfeld Show</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507020000 -0400" stop="20170507030000 -0400" channel="Fox News">
+    <title lang="en">Watters' World</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507030000 -0400" stop="20170507040000 -0400" channel="Fox News">
+    <title lang="en">Justice With Judge Jeanine</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507040000 -0400" stop="20170507050000 -0400" channel="Fox News">
+    <title lang="en">The Greg Gutfeld Show</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507050000 -0400" stop="20170507060000 -0400" channel="Fox News">
+    <title lang="en">Fox Report</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507060000 -0400" stop="20170507100000 -0400" channel="Fox News">
+    <title lang="en">FOX and Friends Sunday</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507100000 -0400" stop="20170507110000 -0400" channel="Fox News">
+    <title lang="en">Sunday Morning Futures With Maria Bartiromo</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507110000 -0400" stop="20170507120000 -0400" channel="Fox News">
+    <title lang="en">MediaBuzz</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507120000 -0400" stop="20170507130000 -0400" channel="Fox News">
+    <title lang="en">America's News Headquarters</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507130000 -0400" stop="20170507140000 -0400" channel="Fox News">
+    <title lang="en">America's News Headquarters</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507140000 -0400" stop="20170507150000 -0400" channel="Fox News">
+    <title lang="en">FOX News Sunday With Chris Wallace</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507150000 -0400" stop="20170507160000 -0400" channel="Fox News">
+    <title lang="en">America's News Headquarters</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507160000 -0400" stop="20170507170000 -0400" channel="Fox News">
+    <title lang="en">America's News Headquarters</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507170000 -0400" stop="20170507180000 -0400" channel="Fox News">
+    <title lang="en">The Greg Gutfeld Show</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507180000 -0400" stop="20170507190000 -0400" channel="Fox News">
+    <title lang="en">America's News Headquarters</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507190000 -0400" stop="20170507200000 -0400" channel="Fox News">
+    <title lang="en">Fox Report</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507200000 -0400" stop="20170507210000 -0400" channel="Fox News">
+    <title lang="en">Watters' World</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507210000 -0400" stop="20170507220000 -0400" channel="Fox News">
+    <title lang="en">Justice With Judge Jeanine</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507220000 -0400" stop="20170507230000 -0400" channel="Fox News">
+    <title lang="en">FOX News Sunday With Chris Wallace</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170507230000 -0400" stop="20170508000000 -0400" channel="Fox News">
+    <title lang="en">Watters' World</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508000000 -0400" stop="20170508010000 -0400" channel="Fox News">
+    <title lang="en">Justice With Judge Jeanine</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508010000 -0400" stop="20170508020000 -0400" channel="Fox News">
+    <title lang="en">Fox Report</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508020000 -0400" stop="20170508030000 -0400" channel="Fox News">
+    <title lang="en">FOX News Sunday With Chris Wallace</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508030000 -0400" stop="20170508050000 -0400" channel="Fox News">
+    <title lang="en">MediaBuzz</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508050000 -0400" stop="20170508060000 -0400" channel="Fox News">
+    <title lang="en">Fox Report</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508060000 -0400" stop="20170508090000 -0400" channel="Fox News">
+    <title lang="en">FOX and Friends</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508090000 -0400" stop="20170508110000 -0400" channel="Fox News">
+    <title lang="en">America's Newsroom</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508110000 -0400" stop="20170508120000 -0400" channel="Fox News">
+    <title lang="en">Happening Now</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508120000 -0400" stop="20170508130000 -0400" channel="Fox News">
+    <title lang="en">Outnumbered</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508130000 -0400" stop="20170508140000 -0400" channel="Fox News">
+    <title lang="en">Happening Now</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508140000 -0400" stop="20170508150000 -0400" channel="Fox News">
+    <title lang="en">America's News Headquarters</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508150000 -0400" stop="20170508160000 -0400" channel="Fox News">
+    <title lang="en">Shepard Smith Reporting</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508160000 -0400" stop="20170508170000 -0400" channel="Fox News">
+    <title lang="en">Your World With Neil Cavuto</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508170000 -0400" stop="20170508180000 -0400" channel="Fox News">
+    <title lang="en">The Fox News Specialists</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508180000 -0400" stop="20170508190000 -0400" channel="Fox News">
+    <title lang="en">Special Report With Bret Baier</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508190000 -0400" stop="20170508200000 -0400" channel="Fox News">
+    <title lang="en">The Story</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508200000 -0400" stop="20170508210000 -0400" channel="Fox News">
+    <title lang="en">Tucker Carlson Tonight</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508210000 -0400" stop="20170508220000 -0400" channel="Fox News">
+    <title lang="en">The Five</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508220000 -0400" stop="20170508230000 -0400" channel="Fox News">
+    <title lang="en">Hannity</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+  <programme start="20170508230000 -0400" stop="20170509000000 -0400" channel="Fox News">
+    <title lang="en">Tucker Carlson Tonight</title>
+    <desc lang="en">No Description Available.(n)</desc>
+  </programme>
+</tv>
